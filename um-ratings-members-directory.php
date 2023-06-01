@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Ratings in Members Directory
  * Description:     Extension to Ultimate Member for adding Ratings to the Members Directory Page.
- * Version:         1.0.0
+ * Version:         1.1.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v3 or later
@@ -27,6 +27,7 @@ class UM_Ratings_Members_Directory {
     public function um_ajax_get_members_data_ratings( $data_array, $user_id, $directory_data ) {
 
         $data_array['ratings'] = '';
+        $data_array['ratings_line'] = '';
 
         $form_ids = UM()->options()->get( 'um_ratings_members_directory_form_ids' );
         if ( ! empty( $form_ids )) {
@@ -36,7 +37,9 @@ class UM_Ratings_Members_Directory {
         if ( empty( $form_ids ) || in_array( $directory_data['form_id'], $form_ids )) {
 
             $rating_keys = array_map( 'trim', array_map( 'sanitize_text_field', explode( ',', UM()->options()->get( 'um_ratings_members_directory' ))));           
-
+            $list_order = array();
+            $list_title = array();
+            
             foreach( $rating_keys as $rating_key ) {
 
                 $stars = um_user( $rating_key );
@@ -47,15 +50,28 @@ class UM_Ratings_Members_Directory {
                     if ( ! empty( $rating_field ) && $rating_field['type'] == 'rating' ) {
                         if ( $rating_field['public'] == 1 || ( $rating_field['public'] == 2 && is_user_logged_in())) {
 
-                            $title = isset( $rating_field['title'] ) ? $rating_field['title'] : $rating_field['label'];
-                            $data_array['ratings'] .= '<div>' . $title . '</div><div class="um-rating-members">';
-                            for ( $i = 1; $i <= $stars; $i++ ) { 
-                                $data_array['ratings'] .= '<i class="star-on-png" title="' . $stars . '"></i>';
-                            }
-                            $data_array['ratings'] .= '</div>';
+                            $list_order[$rating_key] = $stars;
+                            $list_title[$rating_key] = isset( $rating_field['title'] ) ? $rating_field['title'] : $rating_field['label'];
                         }
                     }
                 }
+            }
+
+            $sorting = trim( sanitize_text_field( UM()->options()->get( 'um_ratings_members_directory_sorting' )));
+
+            if ( $sorting == 'descending' ) arsort( $list_order );
+            if ( $sorting == 'ascending' ) asort( $list_order );
+
+            foreach( $list_order as $key => $stars ) {
+
+                $data_array['ratings'] .= '<div>' . $list_title[$key] . '</div><div class="um-rating-members">';
+                $data_array['ratings_line'] .= '<div>' . $list_title[$key] . '&nbsp;';
+                for ( $i = 1; $i <= $stars; $i++ ) { 
+                    $data_array['ratings'] .= '<i class="star-on-png" title="' . $stars . '"></i>';
+                    $data_array['ratings_line'] .= '<i class="star-on-png" title="' . $stars . '"></i>';
+                }
+                $data_array['ratings'] .= '</div>';
+                $data_array['ratings_line'] .=  '</div>';
             }
         }
 
@@ -76,6 +92,17 @@ class UM_Ratings_Members_Directory {
             'type'          => 'text',
             'label'         => __( 'Ratings Members Directory - Form Ids', 'ultimate-member' ),
             'tooltip'       => __( 'Form Ids comma separated.', 'ultimate-member' )
+            );
+
+        $settings_structure['misc']['fields'][] = array(
+            'id'            => 'um_ratings_members_directory_sorting',
+            'type'          => 'select',
+            'size'          => 'small',
+            'options'       => array(   'nosorting'  => __( 'No sorting', 'ultimate-member' ), 
+                                        'ascending'  => __( 'Ascending', 'ultimate-member' ), 
+                                        'descending' => __( 'Descending', 'ultimate-member' ) ),
+            'label'         => __( 'Ratings Members Directory - Sorting stars', 'ultimate-member' ),
+            'tooltip'       => __( 'Select No sorting, Ascending or Descending.', 'ultimate-member' )
             );
 
         return $settings_structure;
