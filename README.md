@@ -22,7 +22,7 @@ https://docs.ultimatemember.com/article/1516-templates-map
 
 ## Updates
 1. Version 1.0.0
-2. Version 1.1.0 Sorting stars
+2. Version 1.1.0 Sorting stars and one or two lines per rating
   
 ## Translations or Text changes
 Use the "Say What?" plugin with text domain ultimate-member.
