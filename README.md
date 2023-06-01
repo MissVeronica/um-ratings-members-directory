@@ -3,8 +3,9 @@ Extension to Ultimate Member for adding Ratings to the Members Directory Page.
 
 ## UM Settings
 UM Settings -> Misc
-1. Ratings Members Directory - Meta Keys
-2. Ratings Members Directory - Form Ids
+1. Ratings Members Directory - Meta Keys - Name of the rating meta keys comma separated.
+2. Ratings Members Directory - Form Ids - Form Ids comma separated.
+3. Ratings Members Directory - Sorting stars - Select No sorting, Ascending or Descending.
 
 ## UM Customization
 https://docs.ultimatemember.com/article/1516-templates-map
@@ -19,7 +20,13 @@ https://docs.ultimatemember.com/article/1516-templates-map
 	<# if ( user.can_edit ) { #></code>
 
 ## Updates
-Version 1.0.0
+1. Version 1.0.0
+2. Version 1.1.0 Sorting stars
   
+## Translations or Text changes
+Use the "Say What?" plugin with text domain ultimate-member.
+
+https://wordpress.org/plugins/say-what/
+
 ## Installation
 Download the zip file and install as a WP Plugin, activate the plugin.
