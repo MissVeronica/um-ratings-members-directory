@@ -102,7 +102,7 @@ class UM_Ratings_Members_Directory {
                                         'ascending'  => __( 'Ascending', 'ultimate-member' ), 
                                         'descending' => __( 'Descending', 'ultimate-member' ) ),
             'label'         => __( 'Ratings Members Directory - Sorting stars', 'ultimate-member' ),
-            'tooltip'       => __( 'Select No sorting (meta_key order), Ascending or Descending.', 'ultimate-member' )
+            'tooltip'       => __( 'Select No sorting (meta_key order), Ascending or Descending number of stars.', 'ultimate-member' )
             );
 
         return $settings_structure;
