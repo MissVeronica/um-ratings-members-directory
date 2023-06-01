@@ -5,7 +5,7 @@ Extension to Ultimate Member for adding Ratings to the Members Directory Page.
 UM Settings -> Misc
 1. Ratings Members Directory - Meta Keys - Name of the rating meta keys comma separated.
 2. Ratings Members Directory - Form Ids - Form Ids comma separated.
-3. Ratings Members Directory - Sorting stars - Select No sorting (meta_key order), Ascending or Descending.
+3. Ratings Members Directory - Sorting stars - Select No sorting (meta_key order), Ascending or Descending number of stars.
 
 ## UM Customization
 https://docs.ultimatemember.com/article/1516-templates-map
