@@ -10,8 +10,9 @@ UM Settings -> Misc
 ## UM Customization
 https://docs.ultimatemember.com/article/1516-templates-map
 1. Customize the Members Directory template file: <code>members-grid.php</code>
-2. Add <code>{{{user.ratings}}}</code> where to display the user ratings
-3. Example to show ratings after the profile name
+2. Add <code>{{{user.ratings}}}</code> where to display the user ratings in two lines per rating
+3. Add <code>{{{user.ratings_line}}}</code> where to display the user ratings in one line per rating
+4. Example to show ratings after the profile name with two lines
 
 <code>// please use for buttons priority > 100
 	do_action( 'um_members_just_after_name_tmpl', $args ); ?>
