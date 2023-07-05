@@ -132,4 +132,4 @@ class UM_Ratings_Members_Directory {
     }
 }
 
-new UM_Ratings_Members_Directory();<?php
+new UM_Ratings_Members_Directory();
