@@ -6,6 +6,7 @@ UM Settings -> Misc
 1. Ratings Members Directory - Meta Keys - Name of the rating meta keys comma separated.
 2. Ratings Members Directory - Form Ids - Form Ids comma separated.
 3. Ratings Members Directory - Sorting stars - Select No sorting (meta_key order), Ascending or Descending number of stars.
+4. Ratings Members Directory - Select Roles for viewing - Leave empty if you want to display ratings for all logged in users
 
 ## UM Customization
 https://docs.ultimatemember.com/article/1516-templates-map
@@ -23,6 +24,7 @@ https://docs.ultimatemember.com/article/1516-templates-map
 ## Updates
 1. Version 1.0.0
 2. Version 1.1.0 Sorting stars and one or two lines per rating
+3. Version 1.2.0 Added "Select Roles for viewing"
   
 ## Translations or Text changes
 Use the "Say What?" plugin with text domain ultimate-member.
