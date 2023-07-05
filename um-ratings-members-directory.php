@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Ratings in Members Directory
  * Description:     Extension to Ultimate Member for adding Ratings to the Members Directory Page.
- * Version:         1.3.0
+ * Version:         1.4.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v3 or later
@@ -53,14 +53,15 @@ class UM_Ratings_Members_Directory {
 
                 foreach( $rating_keys as $rating_key ) {
 
-                    //$stars = um_user( $rating_key );
-                    $stars = get_user_meta( $user_id, $rating_key, true );
+                    $stars = um_user( $rating_key );
+                    //$stars = get_user_meta( $user_id, $rating_key, true );
                     if ( ! empty( $stars )) {
 
                         $rating_field = UM()->builtin()->get_a_field( $rating_key );
 
                         if ( ! empty( $rating_field ) && $rating_field['type'] == 'rating' ) {
-                            if ( $rating_field['public'] == 1 || ( $rating_field['public'] == 2 && is_user_logged_in())) {
+                            //if ( $rating_field['public'] == 1 || ( $rating_field['public'] == 2 && is_user_logged_in())) {
+                            if ( is_user_logged_in()) {
 
                                 $list_order[$rating_key] = $stars;
                                 $list_title[$rating_key] = isset( $rating_field['title'] ) ? $rating_field['title'] : $rating_field['label'];
