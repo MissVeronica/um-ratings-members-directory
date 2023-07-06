@@ -25,6 +25,8 @@ https://docs.ultimatemember.com/article/1516-templates-map
 1. Version 1.0.0
 2. Version 1.1.0 Sorting stars and one or two lines per rating
 3. Version 1.2.0 Added "Select Roles for viewing"
+4. Version 1.3.0 Bug fixing
+5. Version 1.4.0 Removed Privacy restrictions
   
 ## Translations or Text changes
 Use the "Say What?" plugin with text domain ultimate-member.
