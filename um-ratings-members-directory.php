@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Ratings in Members Directory
  * Description:     Extension to Ultimate Member for adding Ratings to the Members Directory Page.
- * Version:         1.4.0
+ * Version:         1.5.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v3 or later
@@ -10,7 +10,7 @@
  * Author URI:      https://github.com/MissVeronica
  * Text Domain:     ultimate-member
  * Domain Path:     /languages
- * UM version:      2.6.0
+ * UM version:      2.8.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; 
@@ -20,7 +20,7 @@ class UM_Ratings_Members_Directory {
 
     function __construct() {
 
-        add_filter( 'um_settings_structure',    array( $this, 'um_settings_structure_ratings' ), 10, 1 );
+        add_filter( 'um_settings_structure',    array( $this, 'um_settings_structure_ratings' ), 20, 1 );
         add_filter( 'um_ajax_get_members_data', array( $this, 'um_ajax_get_members_data_ratings' ), 10, 3 );
     }
 
@@ -94,6 +94,11 @@ class UM_Ratings_Members_Directory {
 
     public function um_settings_structure_ratings( $settings_structure ) {
 
+        if ( ! isset( $settings_structure['misc'] )) {
+            $settings_structure['misc'] = array( 'title'       => __( 'Misc', 'ultimate-member' ),
+                                                 'description' => __( 'Old UM Miscellaneous tab now only used for some free Plugins (UM 2.8.3)', 'ultimate-member' ));
+        }
+
         $settings_structure['misc']['fields'][] = array(
             'id'            => 'um_ratings_members_directory',
             'type'          => 'text',
@@ -112,8 +117,8 @@ class UM_Ratings_Members_Directory {
             'id'            => 'um_ratings_members_directory_sorting',
             'type'          => 'select',
             'size'          => 'small',
-            'options'       => array(   'nosorting'  => __( 'No sorting', 'ultimate-member' ), 
-                                        'ascending'  => __( 'Ascending', 'ultimate-member' ), 
+            'options'       => array(   'nosorting'  => __( 'No sorting', 'ultimate-member' ),
+                                        'ascending'  => __( 'Ascending', 'ultimate-member' ),
                                         'descending' => __( 'Descending', 'ultimate-member' ) ),
             'label'         => __( 'Ratings Members Directory - Sorting stars', 'ultimate-member' ),
             'tooltip'       => __( 'Select No sorting (meta_key order), Ascending or Descending number of stars.', 'ultimate-member' )
