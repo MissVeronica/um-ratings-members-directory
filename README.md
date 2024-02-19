@@ -27,6 +27,7 @@ https://docs.ultimatemember.com/article/1516-templates-map
 3. Version 1.2.0 Added "Select Roles for viewing"
 4. Version 1.3.0 Bug fixing
 5. Version 1.4.0 Removed Privacy restrictions
+6. Version 1.5.0 Addition of Misc tab removed by UM in version 2.8.3
   
 ## Translations or Text changes
 Use the "Say What?" plugin with text domain ultimate-member.
