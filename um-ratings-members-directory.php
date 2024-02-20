@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Ratings in Members Directory
  * Description:     Extension to Ultimate Member for adding Ratings to the Members Directory Page.
- * Version:         1.5.0
+ * Version:         1.6.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v3 or later
@@ -94,44 +94,47 @@ class UM_Ratings_Members_Directory {
 
     public function um_settings_structure_ratings( $settings_structure ) {
 
-        if ( ! isset( $settings_structure['misc'] )) {
-            $settings_structure['misc'] = array( 'title'       => __( 'Misc', 'ultimate-member' ),
-                                                 'description' => __( 'Old UM Miscellaneous tab now only used for some free Plugins (UM 2.8.3)', 'ultimate-member' ));
+        if ( ! isset( $settings_structure['misc']['title'] )) {
+            $settings_structure['misc']['title']                 = __( 'Misc', 'ultimate-member' );
+            $settings_structure['misc']['sections']['']['title'] = __( 'Old UM Miscellaneous tab now only used for some free Plugins (from UM 2.8.3)', 'ultimate-member' );
         }
 
-        $settings_structure['misc']['fields'][] = array(
+        $settings_structure['misc']['sections']['']['form_sections']['ratings']['title']       = __( 'Ratings Members Directory', 'ultimate-member' );
+        $settings_structure['misc']['sections']['']['form_sections']['ratings']['description'] = __( 'Plugin version 1.6.0 - tested with UM 2.8.3', 'ultimate-member' );
+
+        $settings_structure['misc']['sections']['']['form_sections']['ratings']['fields'][] = array(
             'id'            => 'um_ratings_members_directory',
             'type'          => 'text',
-            'label'         => __( 'Ratings Members Directory - Meta Keys', 'ultimate-member' ),
-            'tooltip'       => __( 'Name of the rating meta keys comma separated.', 'ultimate-member' )
+            'label'         => __( 'Meta Keys', 'ultimate-member' ),
+            'description'   => __( 'Name of the rating meta keys comma separated.', 'ultimate-member' )
         );
 
-        $settings_structure['misc']['fields'][] = array(
+        $settings_structure['misc']['sections']['']['form_sections']['ratings']['fields'][] = array(
             'id'            => 'um_ratings_members_directory_form_ids',
             'type'          => 'text',
-            'label'         => __( 'Ratings Members Directory - Form Ids', 'ultimate-member' ),
-            'tooltip'       => __( 'Form Ids comma separated. Blank all Members Directories.', 'ultimate-member' )
+            'label'         => __( 'Form Ids', 'ultimate-member' ),
+            'description'   => __( 'Form Ids comma separated. Blank all Members Directories.', 'ultimate-member' )
         );
 
-        $settings_structure['misc']['fields'][] = array(
+        $settings_structure['misc']['sections']['']['form_sections']['ratings']['fields'][] = array(
             'id'            => 'um_ratings_members_directory_sorting',
             'type'          => 'select',
             'size'          => 'small',
             'options'       => array(   'nosorting'  => __( 'No sorting', 'ultimate-member' ),
                                         'ascending'  => __( 'Ascending', 'ultimate-member' ),
                                         'descending' => __( 'Descending', 'ultimate-member' ) ),
-            'label'         => __( 'Ratings Members Directory - Sorting stars', 'ultimate-member' ),
-            'tooltip'       => __( 'Select No sorting (meta_key order), Ascending or Descending number of stars.', 'ultimate-member' )
+            'label'         => __( 'Sorting stars', 'ultimate-member' ),
+            'description'   => __( 'Select No sorting (meta_key order), Ascending or Descending number of stars.', 'ultimate-member' )
         );
 
-        $settings_structure['misc']['fields'][] = array(
-            'id'          => 'um_ratings_members_directory_roles',
-            'type'        => 'select',
-            'multi'       => true,
-            'options'     => UM()->roles()->get_roles(),
-            'label'       => __( 'Ratings Members Directory - Select Roles for viewing', 'ultimate-member' ),
-            'tooltip'     => __( 'Leave empty if you want to display ratings for all logged in users', 'ultimate-member' ),
-            'size'        => 'small',
+        $settings_structure['misc']['sections']['']['form_sections']['ratings']['fields'][] = array(
+            'id'            => 'um_ratings_members_directory_roles',
+            'type'          => 'select',
+            'multi'         => true,
+            'options'       => UM()->roles()->get_roles(),
+            'label'         => __( 'Select Roles for viewing', 'ultimate-member' ),
+            'description'   => __( 'Leave empty if you want to display ratings for all logged in users', 'ultimate-member' ),
+            'size'          => 'small',
         );
 
         return $settings_structure;
